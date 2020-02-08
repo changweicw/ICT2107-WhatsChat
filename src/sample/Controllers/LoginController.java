@@ -3,13 +3,17 @@ package sample.Controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Window;
+import javafx.stage.Stage;
 import sample.HelperFunctions.AlertHelper;
 import sample.HelperFunctions.ImageStream;
 import java.io.IOException;
@@ -53,15 +57,31 @@ public class LoginController {
 
     @FXML
     protected void loginHandler(ActionEvent event) {
-        Window owner = loginBtn.getScene().getWindow();
+//        Window owner = loginBtn.getScene().getWindow();
+        Stage owner = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
         if(usernameField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.WARNING, owner, "Username Field Empty",
                     "Please enter your username!");
             return;
         } else {
-            /**
-             * TO BE IMPLEMENTED
-             */
+            try {
+//                Parent root = FXMLLoader.load(getClass().getResource("../Scenes/MainApplication.fxml"));
+
+                FXMLLoader loader = new FXMLLoader((getClass().getResource("../Scenes/MainApplication.fxml")));
+                Parent root = loader.load();
+                MainController mainController;
+                mainController = loader.getController();
+                mainController.transferMessage(usernameField.getText());
+
+                Scene mainScene = new Scene(root, 1200, 675);
+                owner.setScene(mainScene);
+                owner.setResizable(false);
+                owner.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
+

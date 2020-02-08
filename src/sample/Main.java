@@ -16,13 +16,18 @@ public class Main extends Application {
          * Launch WhatsChat
          */
 
-        Parent root = FXMLLoader.load(getClass().getResource("Scenes/Login.fxml"));
-        primaryStage.setTitle("WhatsChat");
-        primaryStage.getIcons().add(new Image(getClass().getResource("Assets/logo.png").toExternalForm()));
-        Scene landingScene = new Scene(root, 1200, 675);
-        primaryStage.setScene(landingScene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Scenes/Login.fxml"));
+
+            primaryStage.setTitle("WhatsChat");
+            primaryStage.getIcons().add(new Image(getClass().getResource("Assets/logo.png").toExternalForm()));
+            Scene landingScene = new Scene(root, 1200, 675);
+            primaryStage.setScene(landingScene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
