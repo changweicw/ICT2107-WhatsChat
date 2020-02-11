@@ -2,110 +2,307 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<?import javafx.scene.control.TextArea?>
-<StackPane fx:controller="sample.Controllers.MainController" stylesheets="@../Assets/css/main.css" maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:controller="sample.Controllers.MainController" maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="675.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" />
-        <AnchorPane maxHeight="630.0" maxWidth="300.0" minHeight="630.0" minWidth="300.0" prefHeight="630.0" prefWidth="300.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0" />
+        <ImageView fitHeight="675.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Assets/365674.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="630.0" opacity="0.35" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 15, 0, 0, 0);" width="1150.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="630.0" opacity="0.35" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
             <StackPane.margin>
-                <Insets right="850.0" />
+                <Insets right="900.0" />
+            </StackPane.margin>
+        </Rectangle>
+        <StackPane maxHeight="150.0" maxWidth="250.0" minHeight="150.0" minWidth="250.0" prefHeight="150.0" prefWidth="250.0">
+            <children>
+                <Circle fill="WHITE" radius="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                    <StackPane.margin>
+                        <Insets bottom="25.0" right="140.0" />
+                    </StackPane.margin>
+                </Circle>
+                <Text fx:id="currUser" fill="#2e3a65" strokeType="OUTSIDE" strokeWidth="0.0" text="" StackPane.alignment="CENTER_LEFT">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                    <StackPane.margin>
+                        <Insets bottom="25.0" left="100.0" />
+                    </StackPane.margin>
+                </Text>
+            </children>
+            <StackPane.margin>
+                <Insets bottom="475.0" right="900.0" />
+            </StackPane.margin>
+        </StackPane>
+        <VBox fx:id="onlineUsers" maxHeight="380.0" maxWidth="240.0" minHeight="380.0" minWidth="240.0" prefHeight="380.0" prefWidth="240.0">
+            <children>
+                <HBox maxHeight="60.0" maxWidth="240.0" minHeight="60.0" minWidth="240.0" prefHeight="60.0" prefWidth="240.0">
+                    <children>
+                        <StackPane maxHeight="55.0" maxWidth="180.0" minHeight="55.0" minWidth="180.0" prefHeight="55.0" prefWidth="180.0">
+                            <children>
+                                <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, #e5d1f5, 4,0,3,2);" width="200.0">
+                                    <StackPane.margin>
+                                        <Insets />
+                                    </StackPane.margin>
+                                </Rectangle>
+                                <Text fill="#2e3a65" strokeType="OUTSIDE" strokeWidth="0.0" text="Yuma">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                    <StackPane.margin>
+                                        <Insets right="30.0" />
+                                    </StackPane.margin>
+                                </Text>
+                                <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                                    <StackPane.margin>
+                                        <Insets right="135.0" />
+                                    </StackPane.margin>
+                                </Circle>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="25.0" />
+                            </HBox.margin>
+                        </StackPane>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="3.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <StackPane.margin>
+                <Insets right="910.0" top="160.0" />
+            </StackPane.margin>
+        </VBox>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="GAINSBORO" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 2, 0, 0, 2);" width="600.0">
+            <StackPane.margin>
+                <Insets bottom="530.0" left="550.0" />
+            </StackPane.margin>
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop color="#d94ae1" />
+                        <Stop color="#d94ae1" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="630.0" opacity="0.35" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+            <StackPane.margin>
+                <Insets right="350.0" />
+            </StackPane.margin>
+        </Rectangle>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e3a65" height="2.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="274.0">
+            <StackPane.margin>
+                <Insets bottom="465.0" right="350.0" />
+            </StackPane.margin>
+        </Rectangle>
+        <Button maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #aa52ff, #d94ae1); -fx-effect: dropshadow(gaussian, grey, 2, 0, 3, 2);" text="Create Group" textFill="#fdf5fa">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <StackPane.margin>
+                <Insets right="350.0" top="500.0" />
+            </StackPane.margin>
+        </Button>
+        <VBox maxHeight="530.0" maxWidth="300.0" minHeight="530.0" minWidth="300.0" prefHeight="530.0" prefWidth="300.0">
+            <StackPane.margin>
+                <Insets right="350.0" top="100.0" />
             </StackPane.margin>
             <children>
-                <StackPane maxHeight="200.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="200.0" prefWidth="300.0">
+                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
                     <children>
-                        <Circle fill="DODGERBLUE" radius="54.0" stroke="BLACK" strokeType="INSIDE">
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" width="285.0">
                             <StackPane.margin>
-                                <Insets bottom="50.0" />
+                                <Insets right="15.0" />
                             </StackPane.margin>
-                        </Circle>
-                        <Text fx:id="currUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Felix">
+                        </Rectangle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2106 Chat Group">
                             <StackPane.margin>
-                                <Insets top="100.0" />
+                                <Insets right="150.0" />
+                            </StackPane.margin>
+                        </Text>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                </StackPane>
+                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 3, 0, 4, 2);" width="300.0">
+                            <StackPane.margin>
+                                <Insets />
+                            </StackPane.margin>
+                            <fill>
+                                <LinearGradient endX="0.8095238095238095" endY="0.13809523809523805" startX="0.26190476190476186" startY="0.28095238095238095">
+                                    <stops>
+                                        <Stop color="#d94ae1" />
+                                        <Stop color="#aa52ff" offset="1.0" />
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                        </Rectangle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Chat Group">
+                            <StackPane.margin>
+                                <Insets right="150.0" />
+                            </StackPane.margin>
+                        </Text>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                </StackPane>
+                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
+                    <children>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" width="285.0">
+                            <StackPane.margin>
+                                <Insets right="15.0" />
+                            </StackPane.margin>
+                        </Rectangle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2105 Chat Group">
+                            <StackPane.margin>
+                                <Insets right="150.0" />
+                            </StackPane.margin>
+                        </Text>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                </StackPane>
+                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
+                    <children>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" width="285.0">
+                            <StackPane.margin>
+                                <Insets right="15.0" />
+                            </StackPane.margin>
+                        </Rectangle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2104 Chat Group">
+                            <StackPane.margin>
+                                <Insets right="150.0" />
+                            </StackPane.margin>
+                        </Text>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                </StackPane>
+                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
+                    <children>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" width="285.0">
+                            <StackPane.margin>
+                                <Insets right="15.0" />
+                            </StackPane.margin>
+                        </Rectangle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2103 Chat Group">
+                            <StackPane.margin>
+                                <Insets right="150.0" />
+                            </StackPane.margin>
+                        </Text>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                </StackPane>
+                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
+                    <children>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" width="285.0">
+                            <StackPane.margin>
+                                <Insets right="15.0" />
+                            </StackPane.margin>
+                        </Rectangle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2102 Chat Group">
+                            <StackPane.margin>
+                                <Insets right="150.0" />
                             </StackPane.margin>
                         </Text>
                     </children>
                 </StackPane>
-                <TabPane fx:id="userList" layoutY="200.0" maxHeight="430.0" maxWidth="300.0" minHeight="430.0" minWidth="300.0" prefHeight="430.0" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                        <Tab text="Online">
-                            <content>
-                                <AnchorPane fx:id="onlineUsers" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                            </content>
-                        </Tab>
-                        <Tab text="Friends">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                            </content>
-                        </Tab>
-                    </tabs>
-                </TabPane>
             </children>
-        </AnchorPane>
-        <Pane maxHeight="630.0" maxWidth="820.0" minHeight="630.0" minWidth="820.0" prefHeight="630.0" prefWidth="820.0">
+        </VBox>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e3a65" height="630.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
             <StackPane.margin>
-                <Insets left="320.0" />
+                <Insets right="665.0" />
             </StackPane.margin>
-            <children>
-                <AnchorPane maxHeight="630.0" maxWidth="260.0" minHeight="630.0" minWidth="260.0" prefHeight="630.0" prefWidth="260.0">
-                    <children>
-                        <TextField layoutX="14.0" layoutY="27.0" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" />
-                        <Button layoutX="199.0" layoutY="27.0" mnemonicParsing="false" text="Search" />
-                        <ScrollPane layoutX="14.0" layoutY="69.0" prefHeight="562.0" prefWidth="237.0">
-                            <content>
-                                <VBox prefHeight="492.0" prefWidth="251.0">
-                                    <children>
-                                        <StackPane maxHeight="80.0" maxWidth="235.0" minHeight="80.0" minWidth="235.0" prefHeight="80.0" prefWidth="235.0">
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Chat Group" StackPane.alignment="CENTER_LEFT">
-                                                    <StackPane.margin>
-                                                        <Insets left="20.0" />
-                                                    </StackPane.margin>
-                                                    <font>
-                                                        <Font size="16.0" />
-                                                    </font>
-                                                </Text>
-                                            </children>
-                                        </StackPane>
-                                    </children>
-                                </VBox>
-                            </content>
-                        </ScrollPane>
-                    </children>
-                </AnchorPane>
-                <AnchorPane layoutX="260.0" maxHeight="630.0" maxWidth="560.0" minHeight="630.0" minWidth="560.0" prefHeight="630.0" prefWidth="560.0">
-                    <children>
-                        <Pane maxHeight="80.0" maxWidth="560.0" minHeight="80.0" minWidth="560.0" prefHeight="80.0" prefWidth="560.0">
-                            <children>
-                                <Text layoutX="24.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Chat Group">
-                                    <font>
-                                        <Font size="22.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                        <ScrollPane layoutY="100.0" maxHeight="530.0" maxWidth="560.0" minHeight="530.0" minWidth="560.0" prefHeight="530.0" prefWidth="560.0">
-                            <content>
-                                <TextArea fx:id="messages" prefHeight="502.0" prefWidth="551.0" />
-                            </content></ScrollPane>
-                    </children>
-                </AnchorPane>
-            </children>
-        </Pane>
+        </Rectangle>
+        <TextField maxHeight="30.0" maxWidth="200.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Search Group">
+            <StackPane.margin>
+                <Insets bottom="540.0" right="410.0" />
+            </StackPane.margin>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+        <Button maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #aa52ff, #d94ae1); -fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" text="Search" textFill="#fafafa">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <StackPane.margin>
+                <Insets bottom="545.0" right="150.0" />
+            </StackPane.margin>
+        </Button>
+        <Text fill="#2e3a65" strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Group Chat">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+            <StackPane.margin>
+                <Insets bottom="530.0" left="200.0" />
+            </StackPane.margin>
+        </Text>
+        <TextField maxHeight="40.0" maxWidth="450.0" minHeight="40.0" minWidth="450.0" prefHeight="40.0" prefWidth="450.0" promptText="Message" style="-fx-background-color: whitesmoke;">
+            <StackPane.margin>
+                <Insets left="500.0" top="550.0" />
+            </StackPane.margin>
+        </TextField>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#232526" height="2.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0">
+            <StackPane.margin>
+                <Insets left="550.0" top="475.0" />
+            </StackPane.margin>
+        </Rectangle>
+        <TextArea fx:id="messages" maxHeight="420.0" maxWidth="550.0" minHeight="420.0" minWidth="550.0" prefHeight="420.0" prefWidth="550.0">
+            <StackPane.margin>
+                <Insets left="550.0" top="25.0" />
+            </StackPane.margin>
+        </TextArea>
+        <Button mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-min-width: 40px; -fx-min-height: 40px; -fx-max-width: 40px; -fx-max-height: 40px; -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #aa52ff, #d94ae1); -fx-effect: dropshadow(gaussian, grey, 3, 0, 2, 1);">
+            <StackPane.margin>
+                <Insets left="1005.0" top="550.0" />
+            </StackPane.margin>
+        </Button>
+        <Text fill="#2e3a65" strokeType="OUTSIDE" strokeWidth="0.0" text="Online">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <StackPane.margin>
+                <Insets bottom="280.0" right="1050.0" />
+            </StackPane.margin>
+        </Text>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e3a65" height="2.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+            <StackPane.margin>
+                <Insets bottom="380.0" right="900.0" />
+            </StackPane.margin>
+        </Rectangle>
+        <Circle fill="#1de9b6" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+            <StackPane.margin>
+                <Insets bottom="277.0" right="965.0" />
+            </StackPane.margin>
+        </Circle>
     </children>
 </StackPane>
