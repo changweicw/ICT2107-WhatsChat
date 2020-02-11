@@ -81,18 +81,7 @@ public class LoginController {
 //            tempThread = new client(myClient);
 //            tempThread.start();
 
-            String msg = utils.createPacketMessage(
-                    utils.getUserListCommand,
-                    utils.uniqueId,
-                    usernameField.getText()
-            );
-            DatagramPacket packet = utils.createDatagramPacket(
-                    msg,
-                    InetAddress.getByName(utils.dedicatedIP),
-                    utils.port
-            );
 
-            mainSocket.send(packet);
             //I have to go grab all the currently online users
             loginBackdrop.setImage(new ImageStream().createImage(imageSource));
         } catch (IOException e1) {
@@ -126,10 +115,9 @@ public class LoginController {
                             "Username must: \nContain 8 digits\nContain no spaces\nNot start with a number");
                     return;
                 } else {
-                    mainController.popup("test","ez");
                     if(mainController.getCi().searchUsers(usernameField.getText())==null){
                         DBConnection.createAccount(tempVar);
-                        myClient.setUsername(usernameField.getText());
+                        mainController.getCi().setUsername(usernameField.getText());
                         System.out.println("Can add");
                         String msg = utils.createPacketMessage(
                                 utils.newUserJoinedCommand,
@@ -159,8 +147,6 @@ public class LoginController {
                 owner.setScene(mainScene);
                 owner.setResizable(false);
                 owner.show();
-//                tempThread.stop();
-//                mainController.setUp(myClient);
             } catch (InstantiationException | SQLException | IllegalAccessException | ClassNotFoundException | IOException e) {
                 e.printStackTrace();
             }
