@@ -58,7 +58,9 @@ public class MainController {
         sendBtn.setPadding(Insets.EMPTY);
 
         addOnlineUserToUI("Felix");
+        addOnlineUserToUI("Yuma");
         addGroupToUI("ICT2902");
+        addGroupToUI("ICT2901");
     }
 
     @FXML
@@ -121,9 +123,9 @@ public class MainController {
         userProfileStack.getChildren().addAll(userProfileSpace, userProfilePicture, userToAdd);
         newOnlineUser.getChildren().add(userProfileStack);
         userProfileStack.setAlignment(userProfilePicture, Pos.CENTER_LEFT);
-        userProfileStack.setAlignment(userToAdd, Pos.CENTER);
+        userProfileStack.setMargin(userToAdd, new Insets(0, 35, 0, 0));
+        onlineUsers.setSpacing(20);
         onlineUsers.getChildren().add(newOnlineUser);
-
     }
 
     @FXML
@@ -135,10 +137,10 @@ public class MainController {
                 "-fx-fill: BLACK;");
 
         Rectangle groupSpace = new Rectangle();
-        groupSpace.setArcHeight(5);
-        groupSpace.setArcWidth(5);
+        groupSpace.setArcHeight(20);
+        groupSpace.setArcWidth(20);
         groupSpace.setHeight(60);
-        groupSpace.setWidth(300);
+        groupSpace.setWidth(285);
         groupSpace.setStyle("-fx-effect:  dropshadow(gaussian, grey, 3, 0, 4, 2);" +
                 "-fx-fill: #fdf5fa;");
 
@@ -151,6 +153,8 @@ public class MainController {
 
         groupPane.getChildren().addAll(groupSpace, groupToAdd);
         groupPane.setAlignment(groupToAdd, Pos.CENTER_LEFT);
+        groupPane.setMargin(groupSpace, new Insets(0, 190,0, 150));
+        groupList.setSpacing(3);
         groupList.getChildren().add(groupPane);
     }
 
