@@ -21,11 +21,11 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0" />
         <ImageView fitHeight="675.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../Assets/365674.png" />
+                <Image url="@../Assets/blue.jpg" />
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="630.0" opacity="0.35" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 15, 0, 0, 0);" width="1150.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="630.0" opacity="0.35" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="630.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 15, 0, 0, 0);" width="1150.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="630.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
             <StackPane.margin>
                 <Insets right="900.0" />
             </StackPane.margin>
@@ -56,12 +56,12 @@
                     <children>
                         <StackPane maxHeight="55.0" maxWidth="180.0" minHeight="55.0" minWidth="180.0" prefHeight="55.0" prefWidth="180.0">
                             <children>
-                                <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fdf5fa" height="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, #e5d1f5, 4,0,3,2);" width="200.0">
+                                <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#497799" height="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, #e5d1f5, 4,0,3,2);" width="200.0">
                                     <StackPane.margin>
                                         <Insets />
                                     </StackPane.margin>
                                 </Rectangle>
-                                <Text fill="#2e3a65" strokeType="OUTSIDE" strokeWidth="0.0" text="Yuma">
+                                <Text fill="#fafafa" strokeType="OUTSIDE" strokeWidth="0.0" text="Yuma">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -92,20 +92,12 @@
                 <Insets right="910.0" top="160.0" />
             </StackPane.margin>
         </VBox>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="GAINSBORO" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 2, 0, 0, 2);" width="600.0">
+        <Rectangle fill="#497799" arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="GAINSBORO" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 2, 0, 0, 2);" width="600.0">
             <StackPane.margin>
                 <Insets bottom="530.0" left="550.0" />
             </StackPane.margin>
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop color="#d94ae1" />
-                        <Stop color="#d94ae1" offset="1.0" />
-                    </stops>
-                </LinearGradient>
-            </fill>
         </Rectangle>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="630.0" opacity="0.35" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="630.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
             <StackPane.margin>
                 <Insets right="350.0" />
             </StackPane.margin>
@@ -115,7 +107,7 @@
                 <Insets bottom="465.0" right="350.0" />
             </StackPane.margin>
         </Rectangle>
-        <Button maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #aa52ff, #d94ae1); -fx-effect: dropshadow(gaussian, grey, 2, 0, 3, 2);" text="Create Group" textFill="#fdf5fa">
+        <Button maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #0088cc; -fx-effect: dropshadow(gaussian, grey, 2, 0, 3, 2);" text="Create Group" textFill="#fdf5fa">
             <font>
                 <Font size="18.0" />
             </font>
@@ -147,18 +139,10 @@
                 </StackPane>
                 <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 3, 0, 4, 2);" width="300.0">
+                        <Rectangle fill="#0088cc" arcHeight="5.0" arcWidth="5.0" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 3, 0, 4, 2);" width="300.0">
                             <StackPane.margin>
                                 <Insets />
                             </StackPane.margin>
-                            <fill>
-                                <LinearGradient endX="0.8095238095238095" endY="0.13809523809523805" startX="0.26190476190476186" startY="0.28095238095238095">
-                                    <stops>
-                                        <Stop color="#d94ae1" />
-                                        <Stop color="#aa52ff" offset="1.0" />
-                                    </stops>
-                                </LinearGradient>
-                            </fill>
                         </Rectangle>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Chat Group">
                             <StackPane.margin>
@@ -250,7 +234,7 @@
                 <Font size="14.0" />
             </font>
         </TextField>
-        <Button maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #aa52ff, #d94ae1); -fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" text="Search" textFill="#fafafa">
+        <Button maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color:  #0088cc; -fx-effect: dropshadow(gaussian, grey, 4, 0, 3, 2);" text="Search" textFill="#fafafa">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -258,7 +242,7 @@
                 <Insets bottom="545.0" right="150.0" />
             </StackPane.margin>
         </Button>
-        <Text fill="#2e3a65" strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Group Chat">
+        <Text fill="#fafafa" strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Group Chat">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
@@ -281,7 +265,7 @@
                 <Insets left="550.0" top="25.0" />
             </StackPane.margin>
         </TextArea>
-        <Button mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-min-width: 40px; -fx-min-height: 40px; -fx-max-width: 40px; -fx-max-height: 40px; -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #aa52ff, #d94ae1); -fx-effect: dropshadow(gaussian, grey, 3, 0, 2, 1);">
+        <Button mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-min-width: 40px; -fx-min-height: 40px; -fx-max-width: 40px; -fx-max-height: 40px; -fx-background-color: #0088cc; -fx-effect: dropshadow(gaussian, grey, 3, 0, 2, 1);">
             <StackPane.margin>
                 <Insets left="1005.0" top="550.0" />
             </StackPane.margin>
