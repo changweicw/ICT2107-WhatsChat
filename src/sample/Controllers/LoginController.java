@@ -83,14 +83,13 @@ public class LoginController {
                 //Call db test
                 String tempVar = usernameField.getText();
                 if(!utils.regexMatcherForId(tempVar,utils.patternString)){
-                    DBConnection.createAccount(tempVar);
                     AlertHelper.showAlert(Alert.AlertType.WARNING,
                             owner,
                             "Username dont conform",
                             "Username must \nContain 8 digits\nContain no spaces\nNot start with a number");
                     return;
                 } else {
-
+                    DBConnection.createAccount(tempVar);
                 }
 
                 Scene mainScene = new Scene(root, 1200, 675);
