@@ -1,16 +1,15 @@
 package sample.Controllers;
 
-import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import sample.HelperFunctions.ImageStream;
-
-import java.io.IOException;
+import javafx.stage.Stage;
+import sample.HelperFunctions.AlertHelper;
 
 public class MainController {
     @FXML
@@ -30,6 +29,14 @@ public class MainController {
     public void transferMessage(String message) {
         //Display the message
         currUser.setText(message);
+    }
+
+    @FXML
+    protected void createGroupHandler(ActionEvent event){
+        Stage owner = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        AlertHelper.showAlert(Alert.AlertType.WARNING, owner, "Username Field Empty",
+                "Please enter your username!");
+        return;
     }
 
     public void addOnlineUserToList(String userId){
