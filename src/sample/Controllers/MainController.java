@@ -31,11 +31,14 @@ import sample.HelperFunctions.utils;
 
 import javax.xml.transform.Source;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
 import java.net.MulticastSocket;
 
 public class MainController {
     static DBConnection db = new DBConnection();
     clientInfo ci;
+
     client dedicatedThread;
     private MulticastSocket mainSocket;
     private String activeGroup = "";
@@ -76,11 +79,8 @@ public class MainController {
         imageView.setPreserveRatio(true);
         sendBtn.setGraphic(imageView);
         sendBtn.setPadding(Insets.EMPTY);
+        Thread dedicatedThread;
 
-        addOnlineUserToUI("Felix");
-        addOnlineUserToUI("Yuma");
-        addGroupToUI("ICT2902");
-        addGroupToUI("ICT2901");
 
 
         try {
@@ -89,7 +89,17 @@ public class MainController {
             System.out.println("main controller initialize "+utils.uniqueId);
             dedicatedThread = new client(ci,this);
             dedicatedThread.start();
+            String msg = utils.createPacketMessage(
+                    utils.getUserListCommand,
+                    utils.uniqueId
+            );
+            DatagramPacket packet = utils.createDatagramPacket(
+                    msg,
+                    InetAddress.getByName(utils.dedicatedIP),
+                    utils.port
+            );
 
+            mainSocket.send(packet);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,12 +118,7 @@ public class MainController {
                 "Please enter your username!");
     }
 
-    public void setUp(clientInfo ci){
-        this.ci = ci;
-        System.out.println(this.ci.getUserListInString() + "\n Is in the house");
-        dedicatedThread = new client(this.ci,this);
-        dedicatedThread.start();
-    }
+
 
     //Receive message from scene 1
     public void transferMessage(String message) {

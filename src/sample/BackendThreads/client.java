@@ -1,5 +1,6 @@
 package sample.BackendThreads;
 
+import javafx.application.Platform;
 import sample.Controllers.LoginController;
 import sample.Controllers.MainController;
 import sample.HelperFunctions.utils;
@@ -170,6 +171,7 @@ public class client extends Thread{
                         for(String user:userList.split(",")){
                             if(!user.isEmpty()){
                                 ci.addUserToList(user);
+                                context.addOnlineUserToUI(user);
                             }
                         }
 //                        context.popup("User List",ci.getUserListInString());
@@ -184,7 +186,10 @@ public class client extends Thread{
                         System.out.println("Inside new user joined command");
                         String newUser = msgArray[2];
                         ci.addUserToList(newUser);
-                        System.out.println("These are the new users"+ci.getUserListInString());
+                        Platform.runLater(()->{
+                            context.addOnlineUserToUI(newUser);
+                        });
+                        System.out.println("These are the new users \n"+ci.getUserListInString());
 //                        context.popup("fuck",ci.getUserListInString());
 //                        context.appendUser(ci.getUserListInString());
                         break;
