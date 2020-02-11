@@ -31,7 +31,6 @@ public class MainController {
 
     @FXML
     private void initialize(){
-        createGroupBtn.setOnAction(this::createGroupBtnHandler);
     }
 
     @FXML

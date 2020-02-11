@@ -273,7 +273,7 @@
             </StackPane.margin>
         </Circle>
     </children>
-    <Button maxHeight="40.0" onAction="#createGroupHandler" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #0088cc; -fx-effect: dropshadow(gaussian, grey, 2, 0, 3, 2);" text="Create Group" textFill="#fdf5fa">
+    <Button maxHeight="40.0" onAction="#createGroupBtnHandler" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #0088cc; -fx-effect: dropshadow(gaussian, grey, 2, 0, 3, 2);" text="Create Group" textFill="#fdf5fa">
         <font>
             <Font size="18.0" />
         </font>
