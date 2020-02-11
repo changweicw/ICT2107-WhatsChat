@@ -86,9 +86,10 @@ public class MainController {
         try {
             mainSocket = new MulticastSocket(utils.port);
             ci = new clientInfo(utils.uniqueId);
-            System.out.println("main controller initialize "+utils.uniqueId);
             dedicatedThread = new client(ci,this);
             dedicatedThread.start();
+            System.out.println("main controller initialize "+utils.uniqueId);
+
             String msg = utils.createPacketMessage(
                     utils.getUserListCommand,
                     utils.uniqueId

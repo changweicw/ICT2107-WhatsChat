@@ -171,7 +171,9 @@ public class client extends Thread{
                         for(String user:userList.split(",")){
                             if(!user.isEmpty()){
                                 ci.addUserToList(user);
-                                context.addOnlineUserToUI(user);
+                                Platform.runLater(()->{
+                                    context.addOnlineUserToUI(user);
+                                });
                             }
                         }
 //                        context.popup("User List",ci.getUserListInString());
