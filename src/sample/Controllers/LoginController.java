@@ -17,6 +17,11 @@ import javafx.stage.Stage;
 import sample.HelperFunctions.AlertHelper;
 import sample.HelperFunctions.ImageStream;
 import java.io.IOException;
+import java.sql.SQLException;
+
+import sample.BackendThreads.*;
+import sample.HelperFunctions.utils;
+import sample.HelperFunctions.DBConnection;
 
 public class LoginController {
 
@@ -74,11 +79,25 @@ public class LoginController {
                 mainController = loader.getController();
                 mainController.transferMessage(usernameField.getText());
 
+                //Validation and checks
+                //Call db test
+                String tempVar = usernameField.getText();
+                if(!utils.regexMatcherForId(tempVar,utils.patternString)){
+                    DBConnection.createAccount(tempVar);
+                    AlertHelper.showAlert(Alert.AlertType.WARNING,
+                            owner,
+                            "Username dont conform",
+                            "Username must \nContain 8 digits\nContain no spaces\nNot start with a number");
+                    return;
+                } else {
+
+                }
+
                 Scene mainScene = new Scene(root, 1200, 675);
                 owner.setScene(mainScene);
                 owner.setResizable(false);
                 owner.show();
-            } catch (IOException e) {
+            } catch (IOException | InstantiationException | SQLException | IllegalAccessException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
