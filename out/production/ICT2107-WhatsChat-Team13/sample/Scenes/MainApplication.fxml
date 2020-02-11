@@ -67,7 +67,7 @@
                 <Insets bottom="465.0" right="350.0" />
             </StackPane.margin>
         </Rectangle>
-        <VBox maxHeight="530.0" maxWidth="300.0" minHeight="530.0" minWidth="300.0" prefHeight="530.0" prefWidth="300.0">
+        <VBox fx:id="groupList" maxHeight="530.0" maxWidth="300.0" minHeight="530.0" minWidth="300.0" prefHeight="530.0" prefWidth="300.0">
             <StackPane.margin>
                 <Insets right="350.0" top="100.0" />
             </StackPane.margin>

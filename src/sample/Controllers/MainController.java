@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -32,6 +33,9 @@ public class MainController {
     private VBox onlineUsers;
 
     @FXML
+    private VBox groupList;
+
+    @FXML
     private ImageView defocusHelper;
 
     @FXML
@@ -54,6 +58,7 @@ public class MainController {
         sendBtn.setPadding(Insets.EMPTY);
 
         addOnlineUserToUI("Felix");
+        addGroupToUI("ICT2902");
     }
 
     @FXML
@@ -88,9 +93,8 @@ public class MainController {
         userToAdd.setStyle("-fx-font: 16 system;" +
                 "-fx-fill: #fafafa;" );
 
-    //        Circle userProfilePicture = new Circle();
-    //        userProfilePicture.setRadius(20);
-    //        userProfilePicture.in
+        Circle userProfilePicture = new Circle();
+        userProfilePicture.setRadius(20);
 
         Rectangle userProfileSpace = new Rectangle();
         userProfileSpace.setArcHeight(20);
@@ -114,8 +118,10 @@ public class MainController {
         newOnlineUser.setMinHeight(40);
         newOnlineUser.setMinWidth(240);
 
-        userProfileStack.getChildren().addAll(userProfileSpace, userToAdd);
+        userProfileStack.getChildren().addAll(userProfileSpace, userProfilePicture, userToAdd);
         newOnlineUser.getChildren().add(userProfileStack);
+        userProfileStack.setAlignment(userProfilePicture, Pos.CENTER_LEFT);
+        userProfileStack.setAlignment(userToAdd, Pos.CENTER);
         onlineUsers.getChildren().add(newOnlineUser);
 
     }
@@ -123,36 +129,33 @@ public class MainController {
     @FXML
     public void addGroupToUI(String groupName) {
 
-        Text userToAdd = new Text();
-        userToAdd.setText(groupName);
-        userToAdd.setStyle("-fx-font: 16 system;" +
-                "-fx-fill: #fafafa;");
+        Text groupToAdd = new Text();
+        groupToAdd.setText(groupName);
+        groupToAdd.setStyle("-fx-font: 12 system;" +
+                "-fx-fill: BLACK;");
 
-        Rectangle userProfileSpace = new Rectangle();
-        userProfileSpace.setArcHeight(20);
-        userProfileSpace.setArcWidth(20);
-        userProfileSpace.setHeight(55);
-        userProfileSpace.setWidth(200);
-        userProfileSpace.setStyle("-fx-effect: dropshadow(gaussian, #e5d1f5, 4,0,3,2);" +
-                "-fx-fill: #497799;");
+        Rectangle groupSpace = new Rectangle();
+        groupSpace.setArcHeight(5);
+        groupSpace.setArcWidth(5);
+        groupSpace.setHeight(60);
+        groupSpace.setWidth(300);
+        groupSpace.setStyle("-fx-effect:  dropshadow(gaussian, grey, 3, 0, 4, 2);" +
+                "-fx-fill: #fdf5fa;");
 
-        StackPane userProfileStack = new StackPane();
-        userProfileStack.setMaxHeight(55);
-        userProfileStack.setMaxWidth(200);
-        userProfileStack.setMinHeight(55);
-        userProfileStack.setMinWidth(200);
-        userProfileStack.setStyle("-fx-padding: 0 0 0 25;");
+        StackPane groupPane = new StackPane();
+        groupPane.setMaxHeight(60);
+        groupPane.setMaxWidth(300);
+        groupPane.setMinHeight(60);
+        groupPane.setMinWidth(300);
+        groupPane.setStyle("-fx-padding: 0 0 5 25;");
 
-        HBox newOnlineUser = new HBox();
-        newOnlineUser.setMaxSize(240, 40);
-        newOnlineUser.setMaxHeight(40);
-        newOnlineUser.setMaxWidth(240);
-        newOnlineUser.setMinHeight(40);
-        newOnlineUser.setMinWidth(240);
+        groupPane.getChildren().addAll(groupSpace, groupToAdd);
+        groupPane.setAlignment(groupToAdd, Pos.CENTER_LEFT);
+        groupList.getChildren().add(groupPane);
+    }
 
-        userProfileStack.getChildren().addAll(userProfileSpace, userToAdd);
-        newOnlineUser.getChildren().add(userProfileStack);
-        onlineUsers.getChildren().add(newOnlineUser);
+    @FXML
+    public void toggleSelectedGroup(){
 
     }
 
