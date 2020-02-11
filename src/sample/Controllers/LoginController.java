@@ -68,7 +68,6 @@ public class LoginController {
         Platform.runLater(()->defocusHelper.requestFocus());
 
         appLogo.setImage(new Image(getClass().getResource("../Assets/logo.png").toExternalForm()));
-        String imageSource = "https://assets.new.siemens.com/siemens/assets/api/uuid:90731460a469311769af27b63a74ac213e7db8e2/width:1125/quality:high/version:1555015281/digital-twin-how-are-you.gif";
 
         try {
 
@@ -83,7 +82,7 @@ public class LoginController {
 
 
             //I have to go grab all the currently online users
-            loginBackdrop.setImage(new ImageStream().createImage(imageSource));
+            loginBackdrop.setImage(new Image(this.getClass().getResource("../Assets/ict2107backdrop.gif").toExternalForm()));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
