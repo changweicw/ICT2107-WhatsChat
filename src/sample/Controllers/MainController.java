@@ -3,14 +3,17 @@ package sample.Controllers;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -18,6 +21,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.w3c.dom.css.Rect;
 import sample.BackendThreads.client;
 import sample.BackendThreads.clientInfo;
 import sample.HelperFunctions.AlertHelper;
@@ -25,6 +29,7 @@ import sample.HelperFunctions.DBConnection;
 import sample.HelperFunctions.ImageStream;
 import sample.HelperFunctions.utils;
 
+import javax.xml.transform.Source;
 import java.io.IOException;
 import java.net.MulticastSocket;
 
@@ -33,6 +38,7 @@ public class MainController {
     clientInfo ci;
     client dedicatedThread;
     private MulticastSocket mainSocket;
+    private String activeGroup = "";
 
     @FXML
     private Text currUser;
@@ -57,6 +63,9 @@ public class MainController {
 
     @FXML
     private Button searchBtn;
+
+    @FXML
+    private Text groupHeader;
 
     @FXML
     private void initialize(){
@@ -182,6 +191,7 @@ public class MainController {
                 "-fx-fill: BLACK;");
 
         Rectangle groupSpace = new Rectangle();
+        groupSpace.setId(groupName);
         groupSpace.setArcHeight(20);
         groupSpace.setArcWidth(20);
         groupSpace.setHeight(60);
@@ -201,11 +211,47 @@ public class MainController {
         groupPane.setMargin(groupSpace, new Insets(0, 190,0, 150));
         groupList.setSpacing(3);
         groupList.getChildren().add(groupPane);
+
+        groupSpace.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent t) {
+                Rectangle sourceRectangle = (Rectangle) t.getSource();
+                if(!activeGroup.equals("")){
+                    Scene source = ((Rectangle) t.getSource()).getParent().getScene();
+                    Rectangle prevGroup = (Rectangle) source.lookup("#"+activeGroup);
+                    System.out.println(prevGroup);
+                    prevGroup.setArcHeight(20);
+                    prevGroup.setArcWidth(20);
+                    prevGroup.setHeight(60);
+                    prevGroup.setWidth(285);
+                    prevGroup.setStyle("-fx-effect:  dropshadow(gaussian, grey, 3, 0, 4, 2);" +
+                            "-fx-fill: #fdf5fa;");
+
+                    sourceRectangle.setArcHeight(5);
+                    sourceRectangle.setArcWidth(5);
+                    sourceRectangle.setHeight(60);
+                    sourceRectangle.setWidth(300);
+                    sourceRectangle.setStyle("-fx-effect:  dropshadow(gaussian, grey, 3, 0, 4, 2);" +
+                            "-fx-fill: #0088cc;");
+                    activeGroup = sourceRectangle.getId();
+                    groupHeader.setText(activeGroup);
+                } else{
+                    activeGroup = sourceRectangle.getId();
+                    groupHeader.setText(activeGroup);
+                    sourceRectangle.setArcHeight(5);
+                    sourceRectangle.setArcWidth(5);
+                    sourceRectangle.setHeight(60);
+                    sourceRectangle.setWidth(300);
+                    sourceRectangle.setStyle("-fx-effect:  dropshadow(gaussian, grey, 3, 0, 4, 2);" +
+                            "-fx-fill: #0088cc;");
+                    System.out.println("Setting Active Group");
+                    System.out.println(activeGroup);
+                }
+            }
+        });
+
     }
 
-    @FXML
-    public void toggleSelectedGroup(){
-
-    }
 
 }

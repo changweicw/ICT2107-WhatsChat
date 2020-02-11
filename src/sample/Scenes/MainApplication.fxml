@@ -72,23 +72,6 @@
                 <Insets right="350.0" top="100.0" />
             </StackPane.margin>
             <children>
-                <StackPane maxHeight="60.0" maxWidth="300.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0">
-                    <children>
-                        <Rectangle fill="#0088cc" arcHeight="5.0" arcWidth="5.0" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, grey, 3, 0, 4, 2);" width="300.0">
-                            <StackPane.margin>
-                                <Insets />
-                            </StackPane.margin>
-                        </Rectangle>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Chat Group">
-                            <StackPane.margin>
-                                <Insets right="150.0" />
-                            </StackPane.margin>
-                        </Text>
-                    </children>
-                    <VBox.margin>
-                        <Insets bottom="5.0" />
-                    </VBox.margin>
-                </StackPane>
             </children>
         </VBox>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e3a65" height="630.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
@@ -112,7 +95,7 @@
                 <Insets bottom="545.0" right="150.0" />
             </StackPane.margin>
         </Button>
-        <Text fill="#fafafa" strokeType="OUTSIDE" strokeWidth="0.0" text="ICT2107 Group Chat">
+        <Text fx:id="groupHeader" fill="#fafafa" strokeType="OUTSIDE" strokeWidth="0.0" text="">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
