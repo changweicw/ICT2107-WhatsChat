@@ -17,6 +17,10 @@ import javafx.stage.Stage;
 import sample.HelperFunctions.AlertHelper;
 import sample.HelperFunctions.ImageStream;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.sql.SQLException;
 
 import sample.BackendThreads.*;
@@ -24,6 +28,19 @@ import sample.HelperFunctions.utils;
 import sample.HelperFunctions.DBConnection;
 
 public class LoginController {
+    private MulticastSocket mainSocket;
+//    private GroupThread gt;
+
+    static DBConnection db = new DBConnection();
+
+    clientInfo myClient;
+    MainController mainController;
+    Parent root;
+    client tempThread;
+
+//    public void setGroupThread(GroupThread g){
+//        this.gt = g;
+//    }
 
     @FXML
     private Button loginBtn;
@@ -52,10 +69,33 @@ public class LoginController {
 
         appLogo.setImage(new Image(getClass().getResource("../Assets/logo.png").toExternalForm()));
         String imageSource = "https://assets.new.siemens.com/siemens/assets/api/uuid:90731460a469311769af27b63a74ac213e7db8e2/width:1125/quality:high/version:1555015281/digital-twin-how-are-you.gif";
+
         try {
+
+            myClient = new clientInfo(utils.uniqueId);
+            mainSocket = new MulticastSocket(utils.port);
+            FXMLLoader loader = new FXMLLoader((getClass().getResource("../Scenes/MainApplication.fxml")));
+            root = loader.load();
+            mainController = loader.getController();
+            System.out.println(utils.uniqueId);
+//            tempThread = new client(myClient);
+//            tempThread.start();
+
+            String msg = utils.createPacketMessage(
+                    utils.getUserListCommand,
+                    utils.uniqueId,
+                    usernameField.getText()
+            );
+            DatagramPacket packet = utils.createDatagramPacket(
+                    msg,
+                    InetAddress.getByName(utils.dedicatedIP),
+                    utils.port
+            );
+
+            mainSocket.send(packet);
+            //I have to go grab all the currently online users
             loginBackdrop.setImage(new ImageStream().createImage(imageSource));
-        } catch (
-                IOException e1) {
+        } catch (IOException e1) {
             e1.printStackTrace();
         }
     }
@@ -73,30 +113,55 @@ public class LoginController {
             try {
 //                Parent root = FXMLLoader.load(getClass().getResource("../Scenes/MainApplication.fxml"));
 
-                FXMLLoader loader = new FXMLLoader((getClass().getResource("../Scenes/MainApplication.fxml")));
-                Parent root = loader.load();
-                MainController mainController;
-                mainController = loader.getController();
+
                 mainController.transferMessage(usernameField.getText());
 
                 //Validation and checks
                 //Call db test
                 String tempVar = usernameField.getText();
-                if(!utils.regexMatcherForId(tempVar,utils.patternString)){
+                if(!utils.regexMatcherForId(tempVar,utils.idPatternString)){
                     AlertHelper.showAlert(Alert.AlertType.WARNING,
                             owner,
                             "Username dont conform",
-                            "Username must \nContain 8 digits\nContain no spaces\nNot start with a number");
+                            "Username must: \nContain 8 digits\nContain no spaces\nNot start with a number");
                     return;
                 } else {
-                    DBConnection.createAccount(tempVar);
+                    mainController.popup("test","ez");
+                    if(mainController.getCi().searchUsers(usernameField.getText())==null){
+                        DBConnection.createAccount(tempVar);
+                        myClient.setUsername(usernameField.getText());
+                        System.out.println("Can add");
+                        String msg = utils.createPacketMessage(
+                                utils.newUserJoinedCommand,
+                                myClient.getClientId(),
+                                usernameField.getText()
+                        );
+                        DatagramPacket p = utils.createDatagramPacket(
+                                msg,
+                                InetAddress.getByName(utils.dedicatedIP),
+                                utils.port);
+                        mainSocket.send(p);
+                        //Run the codes to start thread and all
+
+                    } else {
+                        AlertHelper.showAlert(Alert.AlertType.WARNING,
+                                owner,
+                                "Username already exist",
+                                "Please choose another username!");
+                        return;
+                    }
+
                 }
+
+
 
                 Scene mainScene = new Scene(root, 1200, 675);
                 owner.setScene(mainScene);
                 owner.setResizable(false);
                 owner.show();
-            } catch (IOException | InstantiationException | SQLException | IllegalAccessException | ClassNotFoundException e) {
+//                tempThread.stop();
+//                mainController.setUp(myClient);
+            } catch (InstantiationException | SQLException | IllegalAccessException | ClassNotFoundException | IOException e) {
                 e.printStackTrace();
             }
         }
