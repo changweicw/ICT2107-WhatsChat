@@ -4,6 +4,7 @@ package sample.Controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -12,11 +13,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.BackendThreads.client;
+import sample.BackendThreads.clientInfo;
 import sample.HelperFunctions.AlertHelper;
+import sample.HelperFunctions.DBConnection;
 import sample.HelperFunctions.ImageStream;
+import sample.HelperFunctions.utils;
+
 import java.io.IOException;
+import java.net.MulticastSocket;
 
 public class MainController {
+    static DBConnection db = new DBConnection();
+    clientInfo ci;
+    client dedicatedThread;
+    private MulticastSocket mainSocket;
+
     @FXML
     private Text currUser;
 
@@ -31,6 +43,21 @@ public class MainController {
 
     @FXML
     private void initialize(){
+        try {
+            mainSocket = new MulticastSocket(utils.port);
+            ci = new clientInfo(utils.uniqueId);
+            System.out.println("main controller initialize "+utils.uniqueId);
+            dedicatedThread = new client(ci,this);
+            dedicatedThread.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public clientInfo getCi(){
+        return this.ci;
     }
 
     @FXML
@@ -41,7 +68,12 @@ public class MainController {
                 "Please enter your username!");
     }
 
-
+    public void setUp(clientInfo ci){
+        this.ci = ci;
+        System.out.println(this.ci.getUserListInString() + "\n Is in the house");
+        dedicatedThread = new client(this.ci,this);
+        dedicatedThread.start();
+    }
 
     //Receive message from scene 1
     public void transferMessage(String message) {
@@ -49,12 +81,24 @@ public class MainController {
         currUser.setText(message);
     }
 
+
+
     @FXML
     protected void createGroupHandler(ActionEvent event){
         Stage owner = (Stage) ((Node)event.getSource()).getScene().getWindow();
         AlertHelper.showAlert(Alert.AlertType.WARNING, owner, "Username Field Empty",
-                "Please enter your username!");
-        return;
+                "adsad");
+//        db.createGroup();
+//        db.joinGroup();
+
+    }
+
+    public void popup(String title, String msg){
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        a.setTitle(title);
+        a.setContentText(msg);
+        a.show();
+
     }
 
     public void addOnlineUserToList(String userId){

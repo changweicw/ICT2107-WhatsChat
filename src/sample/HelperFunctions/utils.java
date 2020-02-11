@@ -1,5 +1,6 @@
 package sample.HelperFunctions;
 
+import java.lang.management.ManagementFactory;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.util.Random;
@@ -11,6 +12,7 @@ public class utils {
     //start with 9 for misc
     //Start with 1 for joining related
     //Start with 0 for creating related
+    final public static String uniqueId = ManagementFactory.getRuntimeMXBean().getName();
     final public static String joinSearchIpByNameCommand = "10";
     final public static String createSearchIpByNameCommand = "01";
     final public static String foundIPCommand = "1";
@@ -27,7 +29,7 @@ public class utils {
     final public static String addUsersToGroupCommand = "906";
     final public static String dedicatedIP = "228.1.1.1";
 
-    final public static String patternString = "^[^ 0-9]{1}[\\S]{7,}$";
+    final public static String idPatternString = "^[^ 0-9]{1}[\\S]{7,}$";
     final public static int port = 6789;
 
     public static String getRandomSubnet(){

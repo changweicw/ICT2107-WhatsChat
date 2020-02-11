@@ -1,13 +1,22 @@
 package sample.HelperFunctions;
 
-import javax.swing.*;
-import java.io.FileInputStream;
-import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+import java.io.FileInputStream;
+import java.sql.Blob;
+import java.sql.Connection;
 
 public class DBConnection {
 
-    static Connection connection = null;
+    static java.sql.Connection connection = null;
     static String databaseName = "1801016TZA";
     static String url = "jdbc:mysql://rm-gs5c889f8g6s7c80vso.mysql.singapore.rds.aliyuncs.com/" + databaseName;
 
@@ -122,7 +131,6 @@ public class DBConnection {
     public static void createAccount(String userID)
             throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        System.out.println("In function "+userID);
         connection = DriverManager.getConnection(url, username, password);
         PreparedStatement ps = connection.prepareStatement("INSERT INTO account (idAccount) VALUE (?)");
         ps.setString(1, userID);
@@ -164,6 +172,20 @@ public class DBConnection {
         if (status != 0) {
             System.out.print("Success");
         }
+    }
+    public ArrayList<String> getJoinedGroup(String userID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        connection = DriverManager.getConnection(url, username, password);
+        ArrayList<String> listOfGroup = new ArrayList<String>();
+
+        String getGroup = "SELECT * FROM Account_has_Group WHERE idAccount = '" + userID + "'";
+        Statement st = connection.createStatement();
+        ResultSet result = st.executeQuery(getGroup);
+
+        while(result.next()) {
+            listOfGroup.add(result.getString(1));
+        }
+        return listOfGroup;
     }
 
     public void joinGroup(String groupName, String userID)
@@ -218,4 +240,3 @@ public class DBConnection {
     }
 
 }
-
